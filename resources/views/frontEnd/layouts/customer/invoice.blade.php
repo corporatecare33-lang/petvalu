@@ -116,7 +116,7 @@
 
                                 <div class="invoice_form">
                                     <p><strong>Invoice From:</strong></p>
-                                    <p>{{$generalsetting->name}}</p>
+                                    <p>pet valu bd</p>
                                     <p>{{$contact->phone}}</p>
                                     <p>{{$contact->email}}</p>
                                     <p>{{$contact->address}}</p>

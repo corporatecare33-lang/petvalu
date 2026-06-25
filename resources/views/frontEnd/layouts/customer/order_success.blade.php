@@ -139,7 +139,7 @@
                 <div class="inv-logo">
                     <img src="{{asset($generalsetting->white_logo)}}" alt="Logo">
                     <div class="info-val">
-                        <strong>{{$generalsetting->name}}</strong><br>
+                        <strong>pet valu bd</strong><br>
                         <span class="text-muted small">{{$contact->address}}</span><br>
                         <span class="text-muted small">Phone: {{$contact->phone}}</span>
                     </div>
@@ -247,7 +247,7 @@
 
             <div class="mt-5 pt-4 text-center border-top">
                 <p class="small text-muted mb-0">Thank you for your business! This is a computer-generated invoice.</p>
-                <p class="fw-bold small text-uppercase mt-1">{{$generalsetting->name}}</p>
+                <p class="fw-bold small text-uppercase mt-1">pet valu bd</p>
             </div>
         </div>
     </div>

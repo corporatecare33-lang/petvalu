@@ -154,7 +154,7 @@
                             <img src="{{ asset($generalsetting->white_logo) }}" alt="Logo">
                         @endif
                         <div class="info-val">
-                            <strong>{{ $generalsetting->name ?? 'Company Name' }}</strong><br>
+                            <strong>pet valu bd</strong><br>
                             @if($contact)
                                 <span class="text-muted small">{{ $contact->address }}</span><br>
                                 <span class="text-muted small">Phone: {{ $contact->phone }}</span>
@@ -289,7 +289,7 @@
 
                 <div class="mt-5 pt-4 text-center border-top">
                     <p class="small text-muted mb-0">Thank you for your business! This is a computer-generated invoice.</p>
-                    <p class="fw-bold small text-uppercase mt-1">{{ $generalsetting->name ?? 'Company Name' }}</p>
+                    <p class="fw-bold small text-uppercase mt-1">pet valu bd</p>
                 </div>
             </div>
         </div>

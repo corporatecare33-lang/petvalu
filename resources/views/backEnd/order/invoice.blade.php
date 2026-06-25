@@ -127,7 +127,7 @@
 
                                 <div class="invoice_form">
                                     <p style="font-size:16px;line-height:1.8;color:#222"><strong>Invoice From:</strong></p>
-                                    <p style="font-size:16px;line-height:1.8;color:#222">{{$generalsetting->name}}</p>
+                                    <p style="font-size:16px;line-height:1.8;color:#222">pet valu bd</p>
                                     <p style="font-size:16px;line-height:1.8;color:#222">{{$contact->phone}}</p>
                                     <p style="font-size:16px;line-height:1.8;color:#222">{{$contact->email}}</p>
                             {{-- ⭐ SHOW ORDER NOTE --}}
@@ -342,7 +342,7 @@
 @endphp
 <div class="pos-receipt">
     <div class="rh">
-        <div class="shop">{{ $generalsetting->name }}</div>
+        <div class="shop">pet valu bd</div>
         @if($contact->address)<p>{{ $contact->address }}</p>@endif
         @if($contact->phone)<p>Phone: {{ $contact->phone }}</p>@endif
         @if($contact->email)<p>{{ $contact->email }}</p>@endif

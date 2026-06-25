@@ -812,7 +812,7 @@
 
     <div class="footer-v2__bottom">
         <div class="footer-v2__copy-wrap">
-            <span class="footer-v2__copy-text">&copy; {{ date('Y') }} <strong>{{ optional($generalsetting)->name ?? config('app.name') }}</strong>. All rights reserved</span>
+            <span class="footer-v2__copy-text">&copy; {{ date('Y') }} All rights reserved</span>
             <span class="footer-v2__copy-sep">|</span>
             <span class="footer-v2__designer">
                 Designed by

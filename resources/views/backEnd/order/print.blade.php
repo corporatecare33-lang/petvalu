@@ -128,7 +128,7 @@
 
     {{-- Header --}}
     <div class="rh">
-        <div class="shop">{{ $generalsetting->name }}</div>
+        <div class="shop">pet valu bd</div>
         @if($contact->address)<p>{{ $contact->address }}</p>@endif
         @if($contact->phone)<p>Phone: {{ $contact->phone }}</p>@endif
         @if($contact->email)<p>{{ $contact->email }}</p>@endif
