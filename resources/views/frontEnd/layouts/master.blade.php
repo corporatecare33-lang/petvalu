@@ -572,7 +572,7 @@
 
             <div class="mobile-search">
                 <form action="{{route('search')}}" method="GET" class="site-search-form">
-                    <input type="text" placeholder="Search Product ... " value="" class="msearch_keyword msearch_click" name="keyword" />
+                    <input type="search" placeholder="Search Product ... " value="{{ request('keyword') }}" class="msearch_keyword msearch_click" name="keyword" autocomplete="off" />
                     <button type="submit" aria-label="Search"><i data-feather="search"></i></button>
                 </form>
                 <div class="search_result"></div>
@@ -590,7 +590,7 @@
                                     </div>
                                     <div class="main-search">
                                         <form action="{{route('search')}}" method="GET" class="site-search-form">
-                                            <input type="text" placeholder="Search Product..." class="search_keyword search_click" name="keyword" />
+                                            <input type="search" placeholder="Search Product..." value="{{ request('keyword') }}" class="search_keyword search_click" name="keyword" autocomplete="off" />
                                             <button type="submit" aria-label="Search">
                                                 <i data-feather="search"></i>
                                             </button>
