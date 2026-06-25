@@ -25,8 +25,8 @@
         <link rel="stylesheet" href="{{asset('backEnd')}}/assets/css/toastr.min.css" />
 
         <link rel="stylesheet" href="{{asset('frontEnd/css/wsit-menu.css')}}" />
-<link rel="stylesheet" href="{{ url('/style.css') }}?v=4">
-<link rel="stylesheet" href="{{ url('/responsive.css') }}?v=1">
+<link rel="stylesheet" href="{{ url('/style.css') }}?v=5">
+<link rel="stylesheet" href="{{ url('/responsive.css') }}?v=2">
         <link rel="stylesheet" href="{{asset('frontEnd/css/main.css')}}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <meta name="facebook-domain-verification" content="38f1w8335btoklo88dyfl63ba3st2e" />
@@ -571,9 +571,9 @@
             </div>
 
             <div class="mobile-search">
-                <form action="{{route('search')}}">
+                <form action="{{route('search')}}" method="GET" class="site-search-form">
                     <input type="text" placeholder="Search Product ... " value="" class="msearch_keyword msearch_click" name="keyword" />
-                    <button><i data-feather="search"></i></button>
+                    <button type="submit" aria-label="Search"><i data-feather="search"></i></button>
                 </form>
                 <div class="search_result"></div>
             </div>
@@ -589,9 +589,9 @@
                                         <a href="{{route('home')}}"><img src="{{imgUrl($generalsetting->dark_logo)}}" alt="" /></a>
                                     </div>
                                     <div class="main-search">
-                                        <form action="{{route('search')}}">
+                                        <form action="{{route('search')}}" method="GET" class="site-search-form">
                                             <input type="text" placeholder="Search Product..." class="search_keyword search_click" name="keyword" />
-                                            <button>
+                                            <button type="submit" aria-label="Search">
                                                 <i data-feather="search"></i>
                                             </button>
                                         </form>
@@ -1676,23 +1676,16 @@ document.getElementById("sidebarCartOverlay")?.addEventListener("click", closeSi
         </script>
         <!-- cart js end -->
         <script>
-            $(".search_click").on("keyup change", function () {
-                var keyword = $(".search_keyword").val();
-                $.ajax({
-                    type: "GET",
-                    data: { keyword: keyword },
-                    url: "{{route('livesearch')}}",
-                    success: function (products) {
-                        if (products) {
-                            $(".search_result").html(products);
-                        } else {
-                            $(".search_result").empty();
-                        }
-                    },
-                });
-            });
-            $(".msearch_click").on("keyup change", function () {
-                var keyword = $(".msearch_keyword").val();
+            function runHeaderLiveSearch(input) {
+                var $input = $(input);
+                var keyword = $input.val();
+                var $box = $input.closest('.main-search, .mobile-search').find('.search_result').first();
+
+                if (!keyword || keyword.trim().length < 2) {
+                    $box.empty();
+                    return;
+                }
+
                 $.ajax({
                     type: "GET",
                     data: { keyword: keyword },
@@ -1700,12 +1693,24 @@ document.getElementById("sidebarCartOverlay")?.addEventListener("click", closeSi
                     success: function (products) {
                         if (products) {
                             $("#loading").hide();
-                            $(".search_result").html(products);
+                            $box.html(products);
                         } else {
-                            $(".search_result").empty();
+                            $box.empty();
                         }
                     },
                 });
+            }
+
+            $(".search_click, .msearch_click").on("keyup change input", function () {
+                runHeaderLiveSearch(this);
+            });
+
+            $(".site-search-form").on("submit", function (e) {
+                var keyword = $(this).find('input[name="keyword"]').val();
+                if (!keyword || !keyword.trim()) {
+                    e.preventDefault();
+                    $(this).find('input[name="keyword"]').focus();
+                }
             });
         </script>
         <!-- search js start -->

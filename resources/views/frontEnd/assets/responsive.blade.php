@@ -228,15 +228,16 @@
 .mobile-search form input {
     text-align: left;
     padding-left: 15px;
+    padding-right: 10px;
     color: #000;
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .mobile-search form button {
     background-color: {{$generalsetting->secodery_color}};
-    flex: 0 0 60px;
-    position: absolute;
-    right: 0;
-    top: 0;
+    flex: 0 0 56px;
+    position: static;
     height: 100%;
     display: flex;
     align-items: center;

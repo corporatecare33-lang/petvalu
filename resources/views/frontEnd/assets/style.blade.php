@@ -705,12 +705,12 @@ li.Newsletter i {
 }
 
 .mobile-search input {
-    width: 86% !important;
+    width: auto !important;
     text-align: center;
 }
 
 .mobile-search button {
-    width: 13% !important;
+    width: 56px !important;
 }
 
 .main-search form {
@@ -722,6 +722,8 @@ li.Newsletter i {
     margin: 0 auto;
     border-radius: 5px;
     overflow: hidden;
+    display: flex;
+    align-items: stretch;
 }
 
 .main-search form input {
@@ -729,21 +731,27 @@ li.Newsletter i {
     padding: 0 5px;
     font-size: 12px !important;
     background: #f7f7f7;
-    width: 90%;
-    float: left;
+    width: auto;
+    flex: 1 1 auto;
+    min-width: 0;
+    float: none;
 }
 
 .main-search form button {
     height: 100%;
     outline: 0;
     background: {{$generalsetting->secodery_color}};
-    width: 10%;
-    float: left;
+    width: 56px;
+    flex: 0 0 56px;
+    float: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-search form button svg {
     height: 20px;
-    width: 35px;
+    width: 20px;
     color: #fff;
 }
 
