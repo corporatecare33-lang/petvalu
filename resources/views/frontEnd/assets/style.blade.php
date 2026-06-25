@@ -738,6 +738,11 @@ li.Newsletter i {
     text-align: left !important;
 }
 
+.main-search form input:focus::placeholder,
+.mobile-search form input:focus::placeholder {
+    color: transparent;
+}
+
 .main-search form button {
     height: 100%;
     outline: 0;
