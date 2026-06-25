@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="320" viewBox="0 0 420 320" role="img" aria-label="Nail Clipper">
+  <rect width="420" height="320" rx="22" fill="#eff6ff"/>
+  <circle cx="78" cy="74" r="44" fill="#fff" opacity=".85"/>
+  <circle cx="420" cy="320" r="170" fill="#2563eb" opacity=".08"/>
+  <path d="M18 218 C134 190, 277 248, 420 218" fill="none" stroke="#fff" stroke-width="18" opacity=".68"/>
+  <path d="M38 198 H382" stroke="#2563eb" stroke-width="6" opacity=".18" stroke-linecap="round"/>
+  <g transform="translate(210, 115)"><g transform="scale(0.58) rotate(-4)"><rect x="-42" y="-76" width="84" height="146" rx="18" fill="#fff" stroke="#111827" stroke-width="5"/><rect x="-24" y="-102" width="48" height="28" rx="8" fill="#2563eb"/><rect x="-30" y="-22" width="60" height="44" rx="8" fill="#22c55e"/><circle cx="22" cy="42" r="9" fill="#2563eb"/><circle cx="-18" cy="48" r="7" fill="#2563eb"/></g></g>
+  <text x="50%" y="78%" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#111827">Nail Clipper</text>
+  <text x="50%" y="88%" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#2563eb">DOG SHOP</text>
+</svg>
