@@ -1,4 +1,4 @@
-@if($products)
+@if($products && $products->count())
 
 <div class="search_product">
 		<ul>

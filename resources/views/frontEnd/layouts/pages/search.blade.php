@@ -20,7 +20,13 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="showing-data">
-                                <span>Showing {{ $products->firstItem() }}-{{ $products->lastItem() }} of {{ $products->total() }} Results</span>
+                                <span>
+                                    @if($products->total())
+                                        Showing {{ $products->firstItem() }}-{{ $products->lastItem() }} of {{ $products->total() }} Results
+                                    @else
+                                        Showing 0 Results
+                                    @endif
+                                </span>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -37,6 +43,7 @@
                                         <option value="5" @if(request()->get('sort')==5)selected @endif>Name: A-Z</option>
                                         <option value="6" @if(request()->get('sort')==6)selected @endif>Name: Z-A</option>
                                     </select>
+                                    <input type="hidden" name="keyword" value="{{request()->get('keyword')}}" />
                                     <input type="hidden" name="min_price" value="{{request()->get('min_price')}}" />
                                     <input type="hidden" name="max_price" value="{{request()->get('max_price')}}" />
                                 </form>
@@ -159,7 +166,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="custom_paginate">
-                    {{$products->links('pagination::bootstrap-4')}}
+                    {{$products->appends(request()->query())->links('pagination::bootstrap-4')}}
                 </div>
             </div>
         </div>

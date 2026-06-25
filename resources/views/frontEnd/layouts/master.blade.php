@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="{{asset('backEnd')}}/assets/css/toastr.min.css" />
 
         <link rel="stylesheet" href="{{asset('frontEnd/css/wsit-menu.css')}}" />
-<link rel="stylesheet" href="{{ url('/style.css') }}?v=9">
+<link rel="stylesheet" href="{{ url('/style.css') }}?v=10">
 <link rel="stylesheet" href="{{ url('/responsive.css') }}?v=2">
         <link rel="stylesheet" href="{{asset('frontEnd/css/main.css')}}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -1676,22 +1676,28 @@ document.getElementById("sidebarCartOverlay")?.addEventListener("click", closeSi
         </script>
         <!-- cart js end -->
         <script>
+            var headerLiveSearchRequest = null;
+
             function runHeaderLiveSearch(input) {
                 var $input = $(input);
-                var keyword = $input.val();
+                var keyword = ($input.val() || '').trim();
                 var $box = $input.closest('.main-search, .mobile-search').find('.search_result').first();
 
-                if (!keyword || keyword.trim().length < 2) {
+                if (keyword.length < 2) {
                     $box.empty();
                     return;
                 }
 
-                $.ajax({
+                if (headerLiveSearchRequest) {
+                    headerLiveSearchRequest.abort();
+                }
+
+                headerLiveSearchRequest = $.ajax({
                     type: "GET",
                     data: { keyword: keyword },
                     url: "{{route('livesearch')}}",
                     success: function (products) {
-                        if (products) {
+                        if ($.trim(products)) {
                             $("#loading").hide();
                             $box.html(products);
                         } else {
@@ -1701,15 +1707,27 @@ document.getElementById("sidebarCartOverlay")?.addEventListener("click", closeSi
                 });
             }
 
-            $(".search_click, .msearch_click").on("keyup change input", function () {
+            $(document).on("keyup change input", ".search_click, .msearch_click", function () {
                 runHeaderLiveSearch(this);
             });
 
-            $(".site-search-form").on("submit", function (e) {
-                var keyword = $(this).find('input[name="keyword"]').val();
-                if (!keyword || !keyword.trim()) {
+            $(document).on("submit", ".site-search-form", function (e) {
+                var $input = $(this).find('input[name="keyword"]');
+                var keyword = ($input.val() || '').trim();
+
+                if (!keyword) {
                     e.preventDefault();
-                    $(this).find('input[name="keyword"]').focus();
+                    $input.focus();
+                    return;
+                }
+
+                $input.val(keyword);
+                $(this).closest('.main-search, .mobile-search').find('.search_result').empty();
+            });
+
+            $(document).on('click', function (event) {
+                if (!$(event.target).closest('.main-search, .mobile-search').length) {
+                    $('.search_result').empty();
                 }
             });
         </script>

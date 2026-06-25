@@ -928,12 +928,12 @@ $brands = Brand::where('status', 1)
 
     public function livesearch(Request $request)
     {
+        $keyword = trim((string) $request->keyword);
         $products = Product::select('id', 'name', 'slug', 'new_price', 'old_price','stock')
             ->where('status', 1)
             ->where('approval_status', 'approved')
             ->with(['image', 'category', 'subcategory']);
-        if ($request->keyword) {
-            $keyword = $request->keyword;
+        if ($keyword !== '') {
             $products = $products->where(function ($query) use ($keyword) {
                 $query->where('name', 'LIKE', '%' . $keyword . '%')
                     ->orWhere('description', 'LIKE', '%' . $keyword . '%')
@@ -953,7 +953,7 @@ $brands = Brand::where('status', 1)
         }
         $products = $products->get();
 
-        if (empty($request->category) && empty($request->keyword)) {
+        if (empty($request->category) && $keyword === '') {
             $products = [];
         }
         return view('frontEnd.layouts.ajax.search', compact('products'));
@@ -961,12 +961,12 @@ $brands = Brand::where('status', 1)
 
     public function search(Request $request)
     {
+        $keyword = trim((string) $request->keyword);
         $products = Product::select('id', 'name', 'slug', 'new_price', 'old_price','stock')
             ->where('status', 1)
             ->where('approval_status', 'approved')
             ->with(['image', 'category', 'subcategory']);
-        if ($request->keyword) {
-            $keyword = $request->keyword;
+        if ($keyword !== '') {
             $products = $products->where(function ($query) use ($keyword) {
                 $query->where('name', 'LIKE', '%' . $keyword . '%')
                     ->orWhere('description', 'LIKE', '%' . $keyword . '%')
@@ -984,8 +984,10 @@ $brands = Brand::where('status', 1)
         if ($request->category) {
             $products = $products->where('category_id', $request->category);
         }
+        if ($keyword === '' && empty($request->category)) {
+            $products = $products->whereRaw('1 = 0');
+        }
         $products = $products->paginate(36);
-        $keyword = $request->keyword;
         return view('frontEnd.layouts.pages.search', compact('products', 'keyword'));
     }
 
