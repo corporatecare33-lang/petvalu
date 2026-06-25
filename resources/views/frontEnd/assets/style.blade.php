@@ -5242,11 +5242,11 @@ li.all__category__list i {
     display: none !important;
 }
 
-/* Header "ALL CATEGORIES" should not open a duplicate category panel. */
-.catagory_menu li.all__category__list > a {
+/* Home page already has the hero category list, so the header duplicate stays closed there only. */
+body.is-home .catagory_menu li.all__category__list > a {
     pointer-events: none !important;
 }
-.catagory_menu .side__bar.sidebar-menu {
+body.is-home .catagory_menu .side__bar.sidebar-menu {
     display: none !important;
 }
 

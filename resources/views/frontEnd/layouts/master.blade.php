@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="{{asset('backEnd')}}/assets/css/toastr.min.css" />
 
         <link rel="stylesheet" href="{{asset('frontEnd/css/wsit-menu.css')}}" />
-<link rel="stylesheet" href="{{ url('/style.css') }}?v=8">
+<link rel="stylesheet" href="{{ url('/style.css') }}?v=9">
 <link rel="stylesheet" href="{{ url('/responsive.css') }}?v=2">
         <link rel="stylesheet" href="{{asset('frontEnd/css/main.css')}}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -495,7 +495,7 @@
         @endif
         <!-- ========== End TikTok Pixel ========== -->
     </head>
-    <body class="gotop">
+    <body class="gotop {{ Route::is('home') ? 'is-home' : 'is-inner-page' }}">
         @foreach($gtm_code ?? [] as $gtm)
         @php $gtm_noscript_id = preg_match('/^GTM-/i', trim($gtm->code)) ? trim($gtm->code) : 'GTM-'.trim($gtm->code); @endphp
         <!-- Google Tag Manager (noscript) -->
