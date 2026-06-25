@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build && node scripts/vercel-dist.mjs"
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
