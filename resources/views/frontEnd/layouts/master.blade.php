@@ -29,6 +29,15 @@
 <link rel="stylesheet" href="{{ url('/responsive.css') }}?v=2">
         <link rel="stylesheet" href="{{asset('frontEnd/css/main.css')}}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <style>
+            input.search_keyword,
+            input.msearch_keyword {
+                text-align: left !important;
+                direction: ltr !important;
+                padding-left: 12px !important;
+                padding-right: 10px !important;
+            }
+        </style>
         <meta name="facebook-domain-verification" content="38f1w8335btoklo88dyfl63ba3st2e" />
         <style>
             .float{
