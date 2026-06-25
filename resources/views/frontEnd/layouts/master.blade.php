@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="{{asset('backEnd')}}/assets/css/toastr.min.css" />
 
         <link rel="stylesheet" href="{{asset('frontEnd/css/wsit-menu.css')}}" />
-<link rel="stylesheet" href="{{ url('/style.css') }}?v=6">
+<link rel="stylesheet" href="{{ url('/style.css') }}?v=7">
 <link rel="stylesheet" href="{{ url('/responsive.css') }}?v=2">
         <link rel="stylesheet" href="{{asset('frontEnd/css/main.css')}}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -1734,6 +1734,38 @@ document.getElementById("sidebarCartOverlay")?.addEventListener("click", closeSi
                             $(".area").empty();
                         }
                     },
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const homeItems = document.querySelectorAll('.slider-section .home-sidebar-scroll > li');
+
+                homeItems.forEach(function (item) {
+                    const submenu = item.querySelector(':scope > .sidebar-submenu');
+                    if (!submenu) return;
+
+                    function openSubmenu() {
+                        if (window.innerWidth <= 767) return;
+                        const rect = item.getBoundingClientRect();
+                        submenu.style.position = 'fixed';
+                        submenu.style.left = rect.right + 'px';
+                        submenu.style.top = rect.top + 'px';
+                        submenu.style.visibility = 'visible';
+                        submenu.style.opacity = '1';
+                        submenu.style.zIndex = '10001';
+                    }
+
+                    function closeSubmenu() {
+                        submenu.removeAttribute('style');
+                    }
+
+                    item.addEventListener('mouseenter', openSubmenu);
+                    item.addEventListener('focusin', openSubmenu);
+                    item.addEventListener('mouseleave', closeSubmenu);
+                    item.addEventListener('focusout', closeSubmenu);
+                    window.addEventListener('scroll', closeSubmenu, { passive: true });
+                    window.addEventListener('resize', closeSubmenu);
                 });
             });
         </script>

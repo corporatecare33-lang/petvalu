@@ -5242,6 +5242,66 @@ li.all__category__list i {
     display: none !important;
 }
 
+/* Header "ALL CATEGORIES" should not open a duplicate category panel. */
+.catagory_menu li.all__category__list > a {
+    pointer-events: none !important;
+}
+.catagory_menu .side__bar.sidebar-menu {
+    display: none !important;
+}
+
+/* Home hero category menu shows subcategories beside the slider. */
+.slider-section .sidebar-menu {
+    overflow: visible !important;
+}
+.slider-section .home-sidebar-scroll {
+    overflow-y: auto !important;
+    overflow-x: visible !important;
+}
+.slider-section .sidebar-menu .hideshow > li {
+    position: relative !important;
+}
+.slider-section .sidebar-menu .hideshow > li > .sidebar-submenu {
+    position: absolute !important;
+    left: 100% !important;
+    top: 0 !important;
+    width: 250px !important;
+    max-height: 350px !important;
+    overflow-y: auto !important;
+    background: #fff !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, .12) !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    z-index: 10001 !important;
+    transition: opacity .18s ease, visibility .18s ease !important;
+}
+.slider-section .sidebar-menu .hideshow > li:hover > .sidebar-submenu,
+.slider-section .sidebar-menu .hideshow > li:focus-within > .sidebar-submenu {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+.slider-section .sidebar-menu li.submenu-open > .sidebar-submenu {
+    position: absolute !important;
+    left: 100% !important;
+    top: 0 !important;
+    width: 250px !important;
+    max-height: 350px !important;
+    overflow-y: auto !important;
+    background: #fff !important;
+}
+.slider-section .sidebar-menu .sidebar-submenu > li > a {
+    min-height: 30px !important;
+    padding: 6px 14px !important;
+    color: #111 !important;
+    background: #fff !important;
+    font-size: 13px !important;
+    line-height: 18px !important;
+}
+.slider-section .sidebar-menu .sidebar-submenu > li > a:hover {
+    color: #f59e0b !important;
+}
+
 /* Home hero sidebar should end exactly after the last category, no blank scroll area */
 .slider-section .hidetosm {
     align-self: flex-start !important;
