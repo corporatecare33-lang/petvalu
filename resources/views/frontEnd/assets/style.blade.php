@@ -5301,6 +5301,44 @@ li.all__category__list i {
 .slider-section .sidebar-menu .sidebar-submenu > li > a:hover {
     color: #f59e0b !important;
 }
+.home-floating-submenu {
+    display: block !important;
+    position: fixed !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 250px !important;
+    max-height: 350px !important;
+    overflow-y: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    background: #fff !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, .12) !important;
+}
+.home-floating-submenu > li {
+    display: block !important;
+    position: relative !important;
+}
+.home-floating-submenu > li > a {
+    min-height: 30px !important;
+    padding: 6px 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    color: #111 !important;
+    background: #fff !important;
+    font-size: 13px !important;
+    line-height: 18px !important;
+    text-decoration: none !important;
+}
+.home-floating-submenu > li > a:hover {
+    color: #f59e0b !important;
+    background: #fff !important;
+}
+.home-floating-submenu > li > a i,
+.home-floating-submenu .sidebar-childmenu {
+    display: none !important;
+}
 
 /* Home hero sidebar should end exactly after the last category, no blank scroll area */
 .slider-section .hidetosm {

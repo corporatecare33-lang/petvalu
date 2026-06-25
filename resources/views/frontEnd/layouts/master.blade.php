@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="{{asset('backEnd')}}/assets/css/toastr.min.css" />
 
         <link rel="stylesheet" href="{{asset('frontEnd/css/wsit-menu.css')}}" />
-<link rel="stylesheet" href="{{ url('/style.css') }}?v=7">
+<link rel="stylesheet" href="{{ url('/style.css') }}?v=8">
 <link rel="stylesheet" href="{{ url('/responsive.css') }}?v=2">
         <link rel="stylesheet" href="{{asset('frontEnd/css/main.css')}}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -1740,33 +1740,70 @@ document.getElementById("sidebarCartOverlay")?.addEventListener("click", closeSi
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const homeItems = document.querySelectorAll('.slider-section .home-sidebar-scroll > li');
+                let activeSubmenu = null;
+                let activeParent = null;
+                let closeTimer = null;
+
+                function findDirectSubmenu(item) {
+                    return Array.prototype.find.call(item.children, function (child) {
+                        return child.classList && child.classList.contains('sidebar-submenu');
+                    });
+                }
+
+                function restoreSubmenu() {
+                    if (!activeSubmenu || !activeParent) return;
+
+                    activeSubmenu.classList.remove('home-floating-submenu');
+                    activeSubmenu.removeAttribute('style');
+                    activeParent.appendChild(activeSubmenu);
+                    activeSubmenu = null;
+                    activeParent = null;
+                }
+
+                function scheduleClose() {
+                    clearTimeout(closeTimer);
+                    closeTimer = setTimeout(restoreSubmenu, 120);
+                }
+
+                function cancelClose() {
+                    clearTimeout(closeTimer);
+                }
 
                 homeItems.forEach(function (item) {
-                    const submenu = item.querySelector(':scope > .sidebar-submenu');
+                    const submenu = findDirectSubmenu(item);
                     if (!submenu) return;
 
                     function openSubmenu() {
                         if (window.innerWidth <= 767) return;
+                        cancelClose();
+                        if (activeSubmenu && activeSubmenu !== submenu) {
+                            restoreSubmenu();
+                        }
+
                         const rect = item.getBoundingClientRect();
+                        activeSubmenu = submenu;
+                        activeParent = item;
+                        document.body.appendChild(submenu);
+                        submenu.classList.add('home-floating-submenu');
                         submenu.style.position = 'fixed';
                         submenu.style.left = rect.right + 'px';
                         submenu.style.top = rect.top + 'px';
                         submenu.style.visibility = 'visible';
                         submenu.style.opacity = '1';
+                        submenu.style.display = 'block';
                         submenu.style.zIndex = '10001';
-                    }
-
-                    function closeSubmenu() {
-                        submenu.removeAttribute('style');
                     }
 
                     item.addEventListener('mouseenter', openSubmenu);
                     item.addEventListener('focusin', openSubmenu);
-                    item.addEventListener('mouseleave', closeSubmenu);
-                    item.addEventListener('focusout', closeSubmenu);
-                    window.addEventListener('scroll', closeSubmenu, { passive: true });
-                    window.addEventListener('resize', closeSubmenu);
+                    item.addEventListener('mouseleave', scheduleClose);
+                    item.addEventListener('focusout', scheduleClose);
+                    submenu.addEventListener('mouseenter', cancelClose);
+                    submenu.addEventListener('mouseleave', scheduleClose);
                 });
+
+                window.addEventListener('scroll', restoreSubmenu, { passive: true });
+                window.addEventListener('resize', restoreSubmenu);
             });
         </script>
         <script>
