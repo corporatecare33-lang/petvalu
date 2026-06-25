@@ -5243,6 +5243,14 @@ li.all__category__list i {
 .slider-section .hidetosm > .sidebar-menu .home-sidebar-scroll::-webkit-scrollbar {
     width: 4px !important;
 }
+@media (max-width: 767px) {
+    .slider-section .hidetosm {
+        display: none !important;
+    }
+    .slider-section .col-sm-9 {
+        width: 100% !important;
+    }
+}
 .contact__menu {
     text-align: end;
 }
