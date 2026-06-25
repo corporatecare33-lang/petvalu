@@ -25,8 +25,8 @@
         <link rel="stylesheet" href="{{asset('backEnd')}}/assets/css/toastr.min.css" />
 
         <link rel="stylesheet" href="{{asset('frontEnd/css/wsit-menu.css')}}" />
-<link rel="stylesheet" href="{{ url('/style.css') }}?v=12">
-<link rel="stylesheet" href="{{ url('/responsive.css') }}?v=2">
+<link rel="stylesheet" href="{{ url('/style.css') }}?v=13">
+<link rel="stylesheet" href="{{ url('/responsive.css') }}?v=3">
         <link rel="stylesheet" href="{{asset('frontEnd/css/main.css')}}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <style>
@@ -34,8 +34,8 @@
             input.msearch_keyword {
                 text-align: left !important;
                 direction: ltr !important;
-                padding-left: 12px !important;
-                padding-right: 10px !important;
+                padding-left: 16px !important;
+                padding-right: 12px !important;
             }
         </style>
         <meta name="facebook-domain-verification" content="38f1w8335btoklo88dyfl63ba3st2e" />
@@ -581,7 +581,7 @@
 
             <div class="mobile-search">
                 <form action="{{route('search')}}" method="GET" class="site-search-form">
-                    <input type="search" placeholder="Search Product ... " value="{{ request('keyword') }}" class="msearch_keyword msearch_click" name="keyword" autocomplete="off" />
+                    <input type="search" placeholder="Search for items..." value="{{ request('keyword') }}" class="msearch_keyword msearch_click" name="keyword" autocomplete="off" />
                     <button type="submit" aria-label="Search"><i data-feather="search"></i></button>
                 </form>
                 <div class="search_result"></div>
@@ -599,7 +599,7 @@
                                     </div>
                                     <div class="main-search">
                                         <form action="{{route('search')}}" method="GET" class="site-search-form">
-                                            <input type="search" placeholder="Search Product..." value="{{ request('keyword') }}" class="search_keyword search_click" name="keyword" autocomplete="off" />
+                                            <input type="search" placeholder="Search for items..." value="{{ request('keyword') }}" class="search_keyword search_click" name="keyword" autocomplete="off" />
                                             <button type="submit" aria-label="Search">
                                                 <i data-feather="search"></i>
                                             </button>

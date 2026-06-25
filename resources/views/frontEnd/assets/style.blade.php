@@ -710,17 +710,16 @@ li.Newsletter i {
 }
 
 .mobile-search button {
-    width: 56px !important;
+    width: 58px !important;
 }
 
 .main-search form {
-    border: 1px solid;
-    height: 39px;
-    background: #f7f7f7;
-    border-color:  {{$generalsetting->primary_color}};
+    border: 1px solid #8ab8ff;
+    height: 46px;
+    background: #fff;
     width: 100%;
     margin: 0 auto;
-    border-radius: 5px;
+    border-radius: 4px;
     overflow: hidden;
     display: flex;
     align-items: stretch;
@@ -728,14 +727,21 @@ li.Newsletter i {
 
 .main-search form input {
     height: 100%;
-    padding: 0 12px;
-    font-size: 12px !important;
-    background: #f7f7f7;
+    padding: 0 16px;
+    font-size: 16px !important;
+    background: #fff;
+    color: #111827;
     width: auto;
     flex: 1 1 auto;
     min-width: 0;
     float: none;
     text-align: left !important;
+}
+
+.main-search form input::placeholder,
+.mobile-search form input::placeholder {
+    color: #6b7280;
+    opacity: 1;
 }
 
 .main-search form input:focus::placeholder,
@@ -747,8 +753,8 @@ li.Newsletter i {
     height: 100%;
     outline: 0;
     background: {{$generalsetting->secodery_color}};
-    width: 56px;
-    flex: 0 0 56px;
+    width: 58px;
+    flex: 0 0 58px;
     float: none;
     display: flex;
     align-items: center;

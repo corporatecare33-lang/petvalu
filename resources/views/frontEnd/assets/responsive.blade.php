@@ -212,13 +212,12 @@
 }
 .mobile-search form {
     display: flex;
-    border: 1px solid;
-    border-radius: 5px;
-    background-color: {{$generalsetting->secodery_color}};
-    height: 40px;
+    border: 1px solid #8ab8ff;
+    border-radius: 4px;
+    background-color: #fff;
+    height: 46px;
     overflow: hidden;
     position: relative;
-    border-color: hsla(0,0%,100%,.09);
 }
 .mobile-search form svg {
     height: 16px;
@@ -236,7 +235,7 @@
 
 .mobile-search form button {
     background-color: {{$generalsetting->secodery_color}};
-    flex: 0 0 56px;
+    flex: 0 0 58px;
     position: static;
     height: 100%;
     display: flex;
