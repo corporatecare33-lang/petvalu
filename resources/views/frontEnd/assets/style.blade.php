@@ -4854,7 +4854,20 @@ ul.child-category {
 @media (max-width: 767px) {
     .home-slider-container,
     .slider-item {
-        height: 220px;
+        height: 260px !important;
+    }
+
+    .slider-section .home-slider-container,
+    .slider-section .slider-item {
+        width: 100% !important;
+        overflow: hidden;
+    }
+
+    .slider-section .slider-item img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+        object-position: 72% center;
     }
 
     .all-category-hero {
