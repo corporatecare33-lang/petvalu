@@ -706,7 +706,7 @@ li.Newsletter i {
 
 .mobile-search input {
     width: auto !important;
-    text-align: center;
+    text-align: left !important;
 }
 
 .mobile-search button {
@@ -728,13 +728,14 @@ li.Newsletter i {
 
 .main-search form input {
     height: 100%;
-    padding: 0 5px;
+    padding: 0 12px;
     font-size: 12px !important;
     background: #f7f7f7;
     width: auto;
     flex: 1 1 auto;
     min-width: 0;
     float: none;
+    text-align: left !important;
 }
 
 .main-search form button {
